@@ -1,0 +1,37 @@
+\begin{frame}[fragile]{Lenguaje Haskell}
+    Se puede compilar
+    \begin{itemize}
+        \item Archivos estándar tiene extensión \verb|.hs|
+        \item Archivos \emph{literate} tiene extensión \verb|.lhs|
+    \end{itemize}
+    Se puede usar en forma interactiva
+\end{frame}
+
+
+\begin{frame}[fragile]{GHCi - Entorno Interactivo}
+    Breve introducción para usar GHCi
+    \begin{itemize}
+        \item \verb|:h| o \verb|:help| lo obvio
+        \item Configuraciones útiles
+        \begin{itemize}
+            \item \verb|:set +t| muestra tipos de datos
+            \item \verb|:set +s| muestra estadísticas de ejecución
+        \end{itemize}
+        \item \verb|:l <arch>| o \verb|:load <arch>| carga el archivo y lo interpreta
+        \item \verb|:q|, \verb|:quit| o \verb|Ctl+D| para salir
+        \item No se pueden usar instrucciones multilínea directamente. Se pueden escribir
+        \begin{itemize}
+            \item separadas por punto y coma
+            \begin{lstlisting}[style=consola]
+signo :: (Integral a) => a -> a; signo x = mod x 2
+            \end{lstlisting}
+            \item encerradas entre llaves
+            \begin{lstlisting}[style=consola]
+:{
+signo :: (Integral a) => a -> a
+signo x = mod x 2
+:}
+            \end{lstlisting}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
