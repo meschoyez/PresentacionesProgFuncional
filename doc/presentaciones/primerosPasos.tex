@@ -35,3 +35,85 @@ signo x = mod x 2
         \end{itemize}
     \end{itemize}
 \end{frame}
+
+\begin{frame}[fragile]{Tipos de Datos}
+    \begin{itemize}
+        \item \verb|Num| $\Rightarrow$ Es un valor numérico
+        \item \verb|Real| $\Rightarrow$ Es un valor numérico real
+        \item \verb|Fractional| $\Rightarrow$ Es un valor numérico fraccional
+        \item \verb|Integral| $\Rightarrow$ Es un valor numérico entero
+        \begin{itemize}
+            \item \verb|Int| $\Rightarrow$ Limitado
+            \item \verb|Integer| $\Rightarrow$ Virtualmente infinito
+        \end{itemize}
+        \item \verb|Floating| $\Rightarrow$ Es un valor de punto flotante
+        \begin{itemize}
+            \item \verb|Float| $\Rightarrow$ Precisión simple
+            \item \verb|Double| $\Rightarrow$ Precisión doble
+        \end{itemize}
+        \item \verb|Bool| $\Rightarrow$ Es un valor Booleano
+        \item \verb|Char| $\Rightarrow$ Es un caracter
+        \item \verb|Eq| $\Rightarrow$ Tiene definida la igualdad
+        \item \verb|Ord| $\Rightarrow$ Es ordenable
+        \item \verb|Enum| $\Rightarrow$ Es enumerable
+        \item \verb|Show| $\Rightarrow$ Se puede mostrar como texto
+        \item \verb|Read| $\Rightarrow$ Se puede obtener a partir de texto
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Operadores Básicos}
+    \begin{itemize}
+        \item \verb|+| $\Rightarrow$ Suma
+        \item \verb|-| $\Rightarrow$ Resta o cambio de signo
+        \item \verb|*| $\Rightarrow$ Multiplicación
+        \item \verb|/| $\Rightarrow$ División
+        \item \verb|div| $\Rightarrow$ División entera
+        \item \verb|mod| $\Rightarrow$ División modular
+        \item \verb|**| $\Rightarrow$ Potencia con argumentos \verb|Floating|
+        \item \verb|^| $\Rightarrow$ Potencia con primer argumento \verb|Num| y segundo \verb|Integral|
+        \item \verb|%| $\Rightarrow$ Simplifica la relación entre dos \verb|Integral|
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Operadores Básicos}
+    \begin{itemize}
+        \item \verb|==| $\Rightarrow$ Igual
+        \item \verb|/=| $\Rightarrow$ Distinto
+        \item \verb|<, <=| $\Rightarrow$ Menor, menor igual
+        \item \verb|>, >=| $\Rightarrow$ Mayor, mayor igual
+        \item \verb|&&| $\Rightarrow$ Y lógico
+        \item \verb_||_ $\Rightarrow$ O lógico
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Operadores y Llamado a Funciones}
+    \begin{itemize}
+        \item Los operadores son funciones con \emph{definición especial}
+        \item Los operadores son \emph{infijos}
+        \item Se pueden cambiar a \emph{prefijos} usando paréntesis
+        \item Las funciones no requieren paréntesis
+        \item Las funciones son \emph{prefijas}
+        \item Se pueden cambiar a \emph{infijas} con comillas francesas (\verb|`|)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funciones sobre Datos}
+    \begin{itemize}
+        \item \verb|abs| $\Rightarrow$ \dots
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Listas y Cadenas}
+    \item \verb|:| $\Rightarrow$ Construcción de listas
+    \item \verb|++| $\Rightarrow$ Concatenación de listas
+    \item \verb|!!| $\Rightarrow$ Indexación de listas
+    \item \verb|elem| $\Rightarrow$ El elemento pertenece
+    \item \verb|notElem| $\Rightarrow$ El elemento no pertenece
+\end{frame}
+
+\begin{frame}[fragile]{Funciones sobre Listas}
+    \begin{itemize}
+        \item \verb|maximum| $\Rightarrow$ \dots
+    \end{itemize}
+\end{frame}
+
