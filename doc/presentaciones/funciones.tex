@@ -1,0 +1,86 @@
+\begin{frame}[fragile]{Definición de Funciones -- \emph{por composición}}
+    Las funciones sin restricciones se definen de forma simple por \emph{composición}
+    \begin{lstlisting}[style=consola]
+Prelude> sumaDoble x y = 2 * (x + y)
+Prelude> sumaDoble 6 8
+28
+    \end{lstlisting}
+    Haskell infiere tipo de dato, generalmente sin inconveniente,
+    pero conviene indicarlos con \verb|::| y \verb|->| 
+    \begin{lstlisting}[style=consola]
+Prelude> :{
+Prelude| sumaDoble :: Integer -> Integer -> Integer
+Prelude| sumaDoble x y = 2 * (x + y)
+Prelude| :}
+    \end{lstlisting}
+    Las funciones devuelven solo un resultado, siendo el último tipo de dato el tipo del resultado y los anteriores los tipos de los argumentos
+\end{frame}
+
+\begin{frame}[fragile]{Definición de Funciones -- \emph{por composición}}
+    Haskell es \emph{fuertemente tipado} y no permite aplicación de otros tipos de datos
+    \begin{lstlisting}[style=consola]
+Prelude> sumaDoble 6 8
+28
+Prelude> sumaDoble 6.5 7.5
+
+<interactive>:21:11: error:
+    * No instance for (Fractional Integer)
+    arising from the literal '6.5'
+    * In the first argument of 'sumaDoble', namely '6.5'
+    In the expression: sumaDoble 6.5 7.5
+    In an equation for 'it': it = sumaDoble 6.5 7.5
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Definición de Funciones -- \emph{por composición}}
+    Haskell permite polimofismo de tipos, se usan patrones para
+    definir la misma función para datos de la misma clase
+    \begin{lstlisting}[style=consola]
+Prelude> :{
+Prelude| sumaDoble :: (Num a) => a -> a -> a
+Prelude| sumaDoble x y = 2 * (x + y)
+Prelude| :}
+Prelude> sumaDoble 6 8
+28
+Prelude> sumaDoble 6.5 7.5
+28.0
+    \end{lstlisting}
+    Para facilitar la escritura, vamos a usar un archivo y lo leeremos en el intérprete con el comando \verb|:load| o \verb|:l|
+    \begin{lstlisting}[style=consola]
+Prelude> :l factorial.lhs 
+[1 of 1] Compiling Main   ( factorial.lhs, interpreted )
+Ok, one module loaded.
+    \end{lstlisting}
+    Ver presentación \verb|tema_03.pdf| y \verb|tema_04.pdf|
+\end{frame}
+
+\begin{frame}[fragile]{Definición de Funciones -- \emph{con condicionales}}
+    Si se necesita evaluar datos para la aplicación, la definición por composición puede hacerse \emph{con condicionales}
+    \begin{lstlisting}[style=consola]
+fact' :: Int -> Int
+fact' n = if n > 0 then n * fact' (n - 1)
+    else if n == 0 then 1 else error "Negativo"
+    \end{lstlisting}
+    La \emph{indentación} indica que continua el renglón anterior
+\end{frame}
+
+\begin{frame}[fragile]{Definición de Funciones -- \emph{comparación patrones}}
+    Una alternativa es mediante \emph{comparación de patrones}
+    \begin{lstlisting}[style=consola]
+fact :: Int -> Int
+fact 0 = 1
+fact n = n * fact (n - 1)
+    \end{lstlisting}
+    Notar que esta versión no controla el ingreso de valores negativos
+\end{frame}
+
+\begin{frame}[fragile]{Definición de Funciones -- \emph{por partes}}
+    Una alternativa a la \emph{comparación de patrones} es la definición \emph{por partes}
+    \begin{lstlisting}[style=consola]
+fact :: Int -> Int
+factorial n
+    | n == 0 = 1
+    | n > 0  = n * factorial (n - 1)
+    | otherwise  = error "Negativo"
+    \end{lstlisting}
+\end{frame}
