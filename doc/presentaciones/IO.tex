@@ -1,0 +1,37 @@
+\begin{frame}[fragile]{Clase IO -- Imprimir Datos en Consola}
+    Los datos de clase \verb|Show| pueden convertirse a texto
+    \begin{lstlisting}[style=consola]
+Prelude> a = 2 * 5.6
+Prelude> show a
+"11.2"
+    \end{lstlisting}
+    La impresión en consola se realiza con  \verb|putStr| o \verb|putStrLn|
+    \begin{lstlisting}[style=consola]
+Prelude> putStrLn ("Dado 2 * 5.6\n" ++ "a = " ++ show a)
+Dado 2 * 5.6
+a = 11.2
+Prelude> putStr ("Dado 2 * 5.6\n" ++ "a = " ++ show a)
+Dado 2 * 5.6
+a = 11.2Prelude>
+    \end{lstlisting}    
+\end{frame}
+
+\begin{frame}[fragile]{Clase IO -- Leer Datos en Consola}
+    Los datos de clase \verb|Read| pueden obtenerse desde texto,
+    pero debemos indicar el tipo para que se realice la conversión
+    \begin{lstlisting}[style=consola]
+Prelude> read "345"
+*** Exception: Prelude.read: no parse
+Prelude> read "345" :: Int
+345
+    \end{lstlisting}
+%     La impresión en consola se realiza con  \verb|putStr| o \verb|putStrLn|
+%     \begin{lstlisting}[style=consola]
+% Prelude> putStrLn ("Dado 2 * 5.6\n" ++ "a = " ++ show a)
+% Dado 2 * 5.6
+% a = 11.2
+% Prelude> putStr ("Dado 2 * 5.6\n" ++ "a = " ++ show a)
+% Dado 2 * 5.6
+% a = 11.2Prelude>
+%     \end{lstlisting}    
+\end{frame}

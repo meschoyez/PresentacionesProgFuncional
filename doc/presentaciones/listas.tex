@@ -1,0 +1,160 @@
+\begin{frame}[fragile]{Listas y Cadenas}
+    \begin{itemize}
+        \item Las listas permiten agrupar datos del mismo tipo
+        \item Las cadenas (\emph{strings}) son listas de caracteres
+        \item Pueden ser, virtualmente, infinitas
+    \end{itemize}
+    \begin{block}{Operadores}
+        \begin{itemize}
+            \item \verb|:| $\Rightarrow$ Construcción de listas
+            \item \verb|++| $\Rightarrow$ Concatenación de listas
+            \item \verb|!!| $\Rightarrow$ Indexación de listas
+            \item \verb|elem| $\Rightarrow$ El elemento pertenece
+            \item \verb|notElem| $\Rightarrow$ El elemento no pertenece
+        \end{itemize}    
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Listas y Cadenas}
+    Las listas se pueden definir en forma simple
+    \begin{lstlisting}[style=consola]
+Prelude> lista = [1, 2, 3, 4]
+Prelude> lista
+[1,2,3,4]
+    \end{lstlisting}
+    Pero, se construyen a partir del operador \emph{cons} (\verb|:|) y la lista vacía (\verb|[]|) (asociación por derecha)
+    \begin{lstlisting}[style=consola]
+Prelude> lista = 1:2:3:4:[]
+    => por a:[a] -> [a]
+    lista = 1:2:3:[4]
+    => por a:[a] -> [a]
+    lista = 1:2:[3, 4]
+    => por a:[a] -> [a]
+    lista = 1:[2, 3, 4]
+    => por a:[a] -> [a]
+    lista = [1, 2, 3, 4]
+Prelude> lista
+[1,2,3,4]
+    \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Listas y Cadenas}
+    Lo mismo ocurre con las cadenas
+    \begin{lstlisting}[style=consola]
+Prelude> texto = "Hola"
+Prelude> texto
+"Hola"
+    \end{lstlisting}
+    Pero, se construyen a partir del operador \emph{cons} (\verb|:|) y la lista vacía (\verb|[]|) (asociación por derecha)
+    \begin{lstlisting}[style=consola]
+Prelude> texto = 'H':'o':'l':'a':[]
+    => por a:[a] -> [a]
+    texto = 'H':'o':'l':['a']
+    => por a:[a] -> [a]
+    texto = 'H':'o':['l','a']
+    => por a:[a] -> [a]
+    texto = 'H':['o','l','a']
+    => por a:[a] -> [a]
+    texto = ['H','o','l','a']
+Prelude> texto
+"Hola"
+    \end{lstlisting}
+\end{frame}
+
+
+\begin{frame}[fragile]{Listas y Cadenas -- Enumerados}
+    Los datos que pertenezcan a la clase \verb|Enum| se pueden utilizar para generar enumerados
+    \begin{itemize}
+        \item \verb|[m..n]  | $\Rightarrow$ $[m, m+1, \cdots, n-1, n]$
+        \item \verb|[m..]   | $\Rightarrow$ $[m, m+1, \cdots, \infty]$
+        \item \verb|[m,n..p]| $\Rightarrow$ $[m, m+(n-m), m+2(n-m), \cdots, p-1, p]$
+        \item \verb|[m,n..] | $\Rightarrow$ $[m, m+(n-m), m+2(n-m), \cdots, \infty]$
+    \end{itemize}
+    \begin{lstlisting}[style=consola]
+Prelude> [0,2..11]
+[0,2,4,6,8,10]
+Prelude> ['d'..'l']
+"defghijkl"
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Listas y Cadenas -- Enumerados}
+    Podemos construir nuestros enumerados a partir de \verb|Enum|
+    \begin{lstlisting}[style=consola]
+Prelude> :{
+Prelude| data Dia = Lunes | Martes | Miercoles
+Prelude|          | Jueves| Viernes | Sabado 
+Prelude|          | Domingo deriving (Show, Enum)
+Prelude| :}
+Prelude> succ Lunes
+Martes
+Prelude> pred Miercoles 
+Martes
+Prelude> [Martes .. Sabado]
+[Martes,Miercoles,Jueves,Viernes,Sabado]
+Prelude> [Jueves ..]
+[Jueves,Viernes,Sabado,Domingo]
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Listas Por Comprensión}
+    Las listas se pueden definir en notación de conjuntos
+    \begin{lstlisting}[style=consola]
+Prelude> [x/2.0 | x <- [0..10]]
+[0.0,0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0,4.5,5.0]
+    \end{lstlisting}
+    Podemos utilizar más de una variable
+    \begin{lstlisting}[style=consola]
+Prelude> [x+y-z | x <- [0..3], y <- [5..7], z <- [3,4]]
+[2,1,3,2,4,3,3,2,4,3,5,4,4,3,5,4,6,5,5,4,6,5,7,6]
+Prelude> [(x,y) | x <- [1..3], y <- [5..7]]
+[(1,5),(1,6),(1,7),(2,5),(2,6),(2,7),(3,5),(3,6),(3,7)]
+Prelude> [[x,y] | x <- [1..3], y <- [5..7]]
+[[1,5],[1,6],[1,7],[2,5],[2,6],[2,7],[3,5],[3,6],[3,7]]
+    \end{lstlisting}
+    Y guardas para restringir los resultados
+    \begin{lstlisting}[style=consola]
+Prelude> [x | x <- [10..30], even x] 
+[10,12,14,16,18,20,22,24,26,28,30]
+Prelude> [x*y | x<-[10..20], y<-[1..5], even x, x*y > 44]
+[50,48,60,56,70,48,64,80,54,72,90,60,80,100]
+    \end{lstlisting}
+\end{frame}
+
+% \begin{frame}[fragile]{Funciones sobre Listas}
+%     \begin{itemize}
+%         \item \verb|maximum| $\Rightarrow$ \dots
+%     \end{itemize}
+% \end{frame}
+
+\begin{frame}[fragile]{Funciones sobre Listas}
+    Funciones útiles con patrones
+    \begin{lstlisting}[style=consola]
+concat :: [[a]] -> [a]
+concat []       = []
+concat (xs:xss) = xs ++ concat xss
+
+map :: (a -> b) -> [a] -> [b]
+map f []     = []
+map f (x:xs) = f x:map f xs
+
+filter :: (a -> Bool) -> [a] -> [a]
+filter p []     = []
+filter p (x:xs) = if p x then x:filter p xs
+                     else filter p xs
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Funciones sobre Listas}
+    Funciones útiles con patrones
+    \begin{lstlisting}[style=consola]
+zip :: [a] -> [b] -> [(a,b)]
+zip (x:xs) (y:ys) = (x,y): zip xs ys
+zip _      _      = []
+
+zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipWith f (x:xs) (y:ys) = f x y : zipWith f xs ys
+zipWith f _      _      = []
+    \end{lstlisting}
+\end{frame}
