@@ -1,0 +1,69 @@
+\begin{frame}[fragile]{Funciones de Orden Superior}
+    \begin{itemize}
+        \item Permiten definir el \emph{qué} sobre el \emph{cómo} hacer la tarea
+        \item Las funciones de \emph{orden superior}
+        \begin{itemize}
+            \item reciben funciones como parámetros
+            \item devuelven una función como resultado
+        \end{itemize}
+        \item En Haskell las funciones reciben solo una función como argumento y devuelven una función como resultado
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funciones Currificadas (Orden Superior)}
+    \begin{itemize}
+        \item Las funciones de múltiples argumentos se crean a partir de la parcialización o currificación de funciones de un argumento
+        \begin{lstlisting}[style=consola]
+multDos :: (Num a) => a -> a -> a
+multDos x y = x * y
+        \end{lstlisting}
+        \item Los tipos de la función también podrían escribirse
+        \begin{lstlisting}[style=consola]
+multDos :: (Num a) => a -> (a -> a)
+        \end{lstlisting}
+        indicando que \verb|multTres| toma un elemento \verb|a| y devuelve (\verb|->|) una función que toma un \verb|a| y devuelve (\verb|->|) un \verb|a|
+        \item Los paréntesis no son necesarios porque \verb|->| es asociativo por derecha
+        \item Llamar una función con menos argumentos de los esperados crea una función \emph{al vuelo}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funciones Currificadas (Orden Superior)}
+    \begin{itemize}
+        \item La \emph{aplicación parcial} de funciones permite construir nuevas funciones a partir de otras
+        \begin{lstlisting}[style=consola]
+porDiez :: (Num a) => a -> a
+porDiez = multDos 10
+        \end{lstlisting}
+        siendo \verb|porDiez| una función que multiplica el argumento por 10, resultante de evaluar parcialmente \verb|multDos| con un solo argumento
+        \item Paso a paso de la aplicación de función
+        \begin{lstlisting}[style=consola]
+    porDiez 4
+ => por definicion de porDiez
+    multDos 10 4
+ => por definicion de multDos
+    10 * 4
+ => por definicion de *
+    40
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funciones Currificadas (Orden Superior)}
+    Entonces, las funciones se pueden definir a partir de 
+    \begin{itemize}
+        \item Funciones parcializadas
+        \begin{lstlisting}[style=consola]
+dividir y x = x / y
+mitad = dividir 2
+        \end{lstlisting}
+        \item Operadores en formato prefijo
+        \begin{lstlisting}[style=consola]
+mitad = (/2)
+        \end{lstlisting}
+        \item Funciones en formato infijo
+        \begin{lstlisting}[style=consola]
+mitad = (`div` 2)
+        \end{lstlisting}
+    \end{itemize}
+    \textbf{Nota}: Las funciones son a modo de ejemplo y no se tuvo en cuenta todas las restricciones necesarias
+\end{frame}
