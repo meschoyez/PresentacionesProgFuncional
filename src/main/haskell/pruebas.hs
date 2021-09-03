@@ -86,11 +86,20 @@ siguiente 5
 6
  -}
 
-sumar :: Integer -> Integer -> Integer
+sumar :: Integer -> (Integer -> Integer)
 sumar x y = x + y -- (c)
+
+{- >>> sumar 3 4
+7
+ -}
+
 
 siguiente :: Integer -> Integer
 siguiente = sumar 1 -- (d)
+
+{- >>> siguiente 7
+8
+-}
 
 {-
 siguiente 5
@@ -101,6 +110,19 @@ sumar 1 5
 ==> por (+)
 6
  -}
+
+siguiente' = (+1)
+
+{- >>> siguiente' 14 
+16384
+-}
+
+g :: Num a => (a, a) -> a
+g (x, y)= x + y
+
+{- >>> g (6, 5) 
+11
+-}
 
 {- Definir una funcion para calcular el numero
    de bits necesario para representar un valor
