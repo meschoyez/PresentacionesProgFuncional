@@ -1,0 +1,53 @@
+\begin{frame}[fragile]{Programas}
+    En Haskell podemos
+    \begin{itemize}
+        \item Trabajar en modo interactivo
+        \begin{lstlisting}[style=consola]
+$ ghci
+Prelude>
+        \end{lstlisting}
+        \item Ejecutar programas al vuelo
+        \begin{lstlisting}[style=consola]
+$ runhaskell programa.hs
+$ ./programa
+...
+$ runghc programa.hs
+$ ./programa
+        \end{lstlisting}
+        \item Compilar programas
+        \begin{lstlisting}[style=consola]
+$ haskell-compiler programa.hs
+$ ./programa
+...
+$ ghc programa.hs
+$ ./programa
+        \end{lstlisting}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Programas}
+    En Haskell podemos
+    \begin{lstlisting}[style=consola]
+main = do
+    putStr "Ingrese su nombre "
+    nombre <- getLine
+    putStrLn $ "Hola " ++ nombre
+    \end{lstlisting}
+    \begin{itemize}
+        \item La función principal se llama \verb|main|
+        \item Su signatura es \verb|main :: IO something| pero se especifica
+        \item La instrucción \verb|do| une múltiples acciones I/O
+        \item Es importante respetar la indentación
+        \item \verb|putStr| y \verb|putStrLn| imprimen texto
+        \item \verb|getline| lee texto desde el teclado
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]{Programas}
+    \begin{itemize}
+        \item \href{http://learnyouahaskell.com/input-and-output}{Entrada Salida}
+        \item \href{http://learnyouahaskell.com/modules}{Módulos}
+    \end{itemize}
+\end{frame}
+

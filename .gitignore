@@ -15,3 +15,5 @@ SAVE.fig
 *.snm
 *.toc
 *.vrb
+*.hi
+*.o
