@@ -6,7 +6,7 @@
    Solución: -}
 
 data Mes = Enero | Febrero | Marzo | Abril | Mayo | Junio |
-           Julio | Agosto | Septiembre | Octubre | Noviembre | Diciembe deriving (Show, Eq)
+           Julio | Agosto | Septiembre | Octubre | Noviembre | Diciembre deriving (Show, Eq)
 
 {- Ejercicio 7.9.2. Definir la función
    divisible :: Int -> Int -> Bool
@@ -53,7 +53,7 @@ bisiesto n | divisible n 400 = True
 diasDelMes :: (Integral a, Num p) => Mes -> a -> p
 diasDelMes Febrero a | bisiesto a = 29
                      | otherwise  = 28
-diasDelMes m _ | m `elem` [Enero, Marzo, Mayo, Julio, Agosto, Octubre, Diciembe] = 31
+diasDelMes m _ | m `elem` [Enero, Marzo, Mayo, Julio, Agosto, Octubre, Diciembre] = 31
 diasDelMes _ _ = 30
 
 {- Ejercicio 7.9.5. Definir el tipo Fecha para representar las fechas mediante el 
